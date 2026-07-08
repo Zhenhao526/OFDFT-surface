@@ -1,0 +1,18 @@
+{
+  "charge": 0,
+  "converged": true,
+  "electronic_energy_ha": -75.22094610821165,
+  "energies_ha": {
+    "hartree": 37.306363100591255,
+    "kin_plus_xc": 66.06738350755185,
+    "nuclear_attraction": -178.59469271635476,
+    "nuclear_repulsion": 0.0
+  },
+  "final_grad_norm": 9.979e-05,
+  "formula": "O",
+  "method": "mldft",
+  "model": "str25_qm9",
+  "spin_note": "mldft CLI exposes charge but not spin. This neutral O atom run is a closed-shell diagnostic; physical atomic O has an open-shell triplet ground state.",
+  "total_energy_ev": -2046.866218339195,
+  "total_energy_ha": -75.22094610821165
+}
