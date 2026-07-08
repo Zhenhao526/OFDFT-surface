@@ -1,0 +1,5 @@
+START wt_heg_sp08_m30 2026-07-08T15:10:19+08:00
+END wt_heg_sp08_m30 rc=0 elapsed=274s
+START mgp_atomic_sp08_m30 2026-07-08T15:14:53+08:00
+END mgp_atomic_sp08_m30 rc=0 elapsed=340s
+START mgpa_atomic_sp08_m30 2026-07-08T15:20:33+08:00
