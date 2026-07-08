@@ -20,6 +20,7 @@ def main(
     adsorbate: str = typer.Option("O", "--adsorbate"),
     formula: str = typer.Option("O", "--formula"),
     energy_scale: float = typer.Option(1.0, "--energy-scale"),
+    energy_shift_ev: float = typer.Option(0.0, "--energy-shift-ev"),
     reference_kind: str = typer.Option("isolated_adsorbate", "--reference-kind"),
     system_name: str | None = typer.Option(None, "--system-name"),
     backend: str = typer.Option("mofdft", "--backend"),
@@ -37,6 +38,7 @@ def main(
         adsorbate=adsorbate,
         formula=formula,
         energy_scale=energy_scale,
+        energy_shift_ev=energy_shift_ev,
         reference_kind=reference_kind,
         system_name=system_name,
         backend=backend,
@@ -59,6 +61,7 @@ def build_reference_energy_record(
     adsorbate: str = "O",
     formula: str = "O",
     energy_scale: float = 1.0,
+    energy_shift_ev: float = 0.0,
     reference_kind: str = "isolated_adsorbate",
     system_name: str | None = None,
     backend: str = "mofdft",
@@ -70,13 +73,16 @@ def build_reference_energy_record(
     runtime_seconds: float | None = None,
     converged: bool = True,
 ) -> dict[str, Any]:
-    total_energy_ev = float(energy_ev) * float(energy_scale)
+    scaled_energy_ev = float(energy_ev) * float(energy_scale)
+    total_energy_ev = scaled_energy_ev + float(energy_shift_ev)
     metadata = _drop_none(
         {
             "source": "external_reference_energy",
             "formula": formula,
             "input_energy_ev": float(energy_ev),
             "energy_scale": float(energy_scale),
+            "scaled_energy_ev": scaled_energy_ev,
+            "energy_shift_ev": float(energy_shift_ev),
             "method": method,
             "xc": xc,
             "reference_convention": reference_convention,

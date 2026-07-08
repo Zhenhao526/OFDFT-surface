@@ -28,7 +28,24 @@ def test_build_reference_energy_record_scales_molecular_reference():
     assert record["metadata"]["formula"] == "O2"
     assert record["metadata"]["input_energy_ev"] == pytest.approx(-12.0)
     assert record["metadata"]["energy_scale"] == pytest.approx(0.5)
+    assert record["metadata"]["scaled_energy_ev"] == pytest.approx(-6.0)
+    assert record["metadata"]["energy_shift_ev"] == pytest.approx(0.0)
     assert record["metadata"]["reference_convention"] == "half_o2"
+
+
+def test_build_reference_energy_record_applies_calibration_shift():
+    record = build_reference_energy_record(
+        energy_ev=-12.0,
+        energy_scale=0.5,
+        energy_shift_ev=1.25,
+        reference_id="half_o2_calibrated",
+        formula="O2",
+        reference_convention="half_o2_calibrated_to_qe_o_atom",
+    )
+
+    assert record["total_energy_ev"] == pytest.approx(-4.75)
+    assert record["metadata"]["scaled_energy_ev"] == pytest.approx(-6.0)
+    assert record["metadata"]["energy_shift_ev"] == pytest.approx(1.25)
 
 
 def test_reference_energy_record_feeds_hybrid_adsorption_builder():

@@ -4,7 +4,7 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  scripts/build_mofdft_hybrid_from_energy.sh ENERGY_EV ENERGY_SCALE REFERENCE_ID FORMULA OUT_DIR
+  scripts/build_mofdft_hybrid_from_energy.sh ENERGY_EV ENERGY_SCALE REFERENCE_ID FORMULA OUT_DIR [ENERGY_SHIFT_EV]
 
 Examples:
   # O atom reference from external M-OFDFT:
@@ -13,12 +13,15 @@ Examples:
   # Half-O2 reference from external M-OFDFT:
   scripts/build_mofdft_hybrid_from_energy.sh -1120.0 0.5 half_o2_mofdft O2 data/reports/benchmarks/mofdft_half_o2_hybrid
 
+  # Half-O2 reference shifted onto the current QE/DFTpy O-atom reference convention:
+  scripts/build_mofdft_hybrid_from_energy.sh -1120.0 0.5 half_o2_mofdft_calibrated O2 data/reports/benchmarks/mofdft_half_o2_calibrated 5.0
+
 The script keeps WT for the Mg slab and WT for the adsorbed Mg+O structures,
 then replaces only the adsorbate reference with the supplied external energy.
 EOF
 }
 
-if [[ $# -ne 5 ]]; then
+if [[ $# -ne 5 && $# -ne 6 ]]; then
   usage
   exit 2
 fi
@@ -28,6 +31,7 @@ ENERGY_SCALE="$2"
 REFERENCE_ID="$3"
 FORMULA="$4"
 OUT_DIR="$5"
+ENERGY_SHIFT_EV="${6:-0.0}"
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PYTHON_BIN="${PYTHON_BIN:-$ROOT_DIR/.venv/bin/python}"
@@ -46,12 +50,13 @@ mkdir -p "$OUT_DIR"
 "$PYTHON_BIN" -m ofks.workflows.build_reference_energy \
   --energy-ev "$ENERGY_EV" \
   --energy-scale "$ENERGY_SCALE" \
+  --energy-shift-ev "$ENERGY_SHIFT_EV" \
   --reference-id "$REFERENCE_ID" \
   --adsorbate O \
   --formula "$FORMULA" \
   --backend mofdft \
   --candidate-name mofdft_adsorbate_reference \
-  --reference-convention "${FORMULA}_scale_$ENERGY_SCALE" \
+  --reference-convention "${FORMULA}_scale_${ENERGY_SCALE}_shift_${ENERGY_SHIFT_EV}" \
   --out "$REFERENCE_JSONL"
 
 "$PYTHON_BIN" -m ofks.workflows.build_hybrid_adsorption \
