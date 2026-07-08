@@ -78,15 +78,15 @@ slab+O energy overcorrects the adsorption formula.
 
 ## Consequence For The Hybrid OFDFT Plan
 
-The most realistic first hybrid path is still useful:
+The most realistic first hybrid path is still useful for an atomic-O reference:
 
 ```text
-E_ads_hybrid = E_WT(Mg slab + O) - E_WT(Mg slab) - E_MOFDFT(O or O2)
+E_ads_hybrid = E_WT(Mg slab + O) - E_WT(Mg slab) - E_MOFDFT(O)
 ```
 
 But based on this oracle diagnostic, it should be treated primarily as a
 reference-energy calibration step. It may reduce absolute raw adsorption-energy
-bias if M-OFDFT gives a better isolated oxygen reference, but it will not by
+bias if M-OFDFT gives a better isolated atomic-O reference, but it will not by
 itself improve geometry ranking or site selectivity.
 
 To improve ranking, the next technical step must target the adsorbed
@@ -102,16 +102,18 @@ slab+oxygen total energy itself. Practical candidates are:
 
 ## Recommended Next Step
 
-Use the explicit molecular-reference adapter:
+Use the explicit external-reference adapter, but keep atomic O and O2 separated:
 
 ```text
 M-OFDFT O/O2 output -> reference JSONL -> ofks-build-hybrid-adsorption -> KSDFT benchmark
 ```
 
-Then run two comparisons:
+Then run two branches:
 
-1. WT adsorbed + WT slab + M-OFDFT O atom reference.
-2. WT adsorbed + WT slab + 1/2 M-OFDFT O2 reference.
+1. Atomic-O branch: WT adsorbed + WT slab + M-OFDFT O atom reference, compared
+   against the existing atomic-O KSDFT labels.
+2. O2 branch: WT adsorbed + WT slab + 1/2 M-OFDFT O2 reference, compared only
+   after rebuilding KSDFT truth with the same half-O2 reference.
 
 This will separate the physically meaningful molecular reference convention
 from the larger adsorbed-interface KEDF error.
@@ -132,4 +134,5 @@ ofks-build-reference-energy \
 ```
 
 The resulting JSONL file can be passed as `--adsorbate-reference` to
-`ofks-build-hybrid-adsorption`.
+`ofks-build-hybrid-adsorption`, but it should not be benchmarked against the
+current atomic-O-reference labels.

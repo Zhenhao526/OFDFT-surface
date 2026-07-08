@@ -46,7 +46,7 @@ Primary output files:
 - `o2_mldft.stdout`
 - `mofdft_o2_summary.json`
 
-## Hybrid Benchmark
+## Half-O2 Diagnostic
 
 The 1/2 O2 energy was passed to:
 
@@ -59,7 +59,8 @@ scripts/build_mofdft_hybrid_from_energy.sh \
   data/reports/benchmarks/mofdft_o2_real_20260708_mc5000/hybrid_half_o2
 ```
 
-Benchmark against the 50 KSDFT/PBE Mg(0001)+O adsorption labels:
+The following numbers were produced against the 50 KSDFT/PBE Mg(0001)+O
+adsorption labels:
 
 | metric | value |
 | --- | ---: |
@@ -69,9 +70,9 @@ Benchmark against the 50 KSDFT/PBE Mg(0001)+O adsorption labels:
 | Spearman | `0.152845` |
 | top-1 match | no |
 
-The aligned MAE is identical to the WT-reference and KS-oracle-reference
-diagnostics because replacing the adsorbate reference applies one constant
-shift to all adsorption structures.
+These numbers are a cross-convention diagnostic only. The KSDFT labels use an
+isolated atomic-O reference, while this candidate uses a half-O2 molecular
+reference. Atomic O cannot be treated as `1/2 O2` in this benchmark.
 
 ## Interpretation
 
@@ -89,23 +90,23 @@ mixed OFDFT adsorption-energy prediction.
 
 ## Next Required Fix
 
-To make M-OFDFT molecular references usable in the Mg surface workflow, one of
-the following energy conventions must be introduced:
+The O atom and O2 molecule must be handled as separate reference conventions.
+For the present Mg(0001)+O label set, the valid comparison target is the
+atomic-O branch:
 
-- train/evaluate molecular M-OFDFT in the same pseudopotential Hamiltonian used
-  for the Mg+O workflow;
-- convert the molecular all-electron result to a compatible atomization or
-  reaction-energy convention rather than inserting its absolute total energy;
-- calibrate an oxygen chemical potential offset on shared KSDFT references and
-  use M-OFDFT only for molecular deformation or relative corrections;
-- expose spin in the MLDFT runner and rerun O2 with the triplet state before any
-  physical oxygen chemical-potential analysis.
+- compute an atomic-O M-OFDFT reference with the correct spin/state and a
+  compatible Hamiltonian convention, or keep using the existing QE atomic-O
+  reference for oracle diagnostics;
+- compare only against `mg0001_o_pilot_all50_ks_adsorption.jsonl`, which is an
+  isolated atomic-O-reference label set.
 
-The immediate engineering next step is to add a calibrated-reference mode:
+For an O2/oxygen-chemical-potential branch, the truth labels must first be
+rebuilt with the same half-O2 convention:
 
 ```text
-mu_O = 1/2 E_MOFDFT(O2) + delta_mu_O
+E_ads^(1/2 O2) = E(slab + O) - E(clean slab) - 1/2 E(O2)
 ```
 
-where `delta_mu_O` is fitted from compatible KSDFT/QE reference calculations
-before comparing adsorption energies.
+Only after a compatible KSDFT O2 reference is available should the MLDFT O2
+energy be compared in that branch. The MLDFT runner should also expose spin and
+rerun O2 as triplet before any physical oxygen chemical-potential analysis.

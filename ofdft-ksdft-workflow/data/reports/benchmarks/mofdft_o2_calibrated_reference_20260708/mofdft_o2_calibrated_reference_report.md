@@ -1,18 +1,25 @@
-# Calibrated MLDFT/M-OFDFT O2 Reference Benchmark
+# Reference-Mismatch Diagnostic: MLDFT/M-OFDFT O2 vs Atomic-O Labels
 
 Date: 2026-07-08
 
-This report continues the real `mldft` O2 run by adding the calibrated
-reference-energy mode needed for the current Mg(0001)+O adsorption workflow.
+Correction: this directory is retained only as a software/reference-mismatch
+diagnostic. It must not be used as a physical adsorption benchmark.
+
+The current Mg(0001)+O KSDFT labels use an isolated atomic-O reference. Atomic O
+cannot be treated as `1/2 O2` in this benchmark. The O atom and O2 molecule must
+be handled as separate reference conventions.
+
+This report continues the real `mldft` O2 run by showing what happens if the
+half-O2 energy is forced onto the current atomic-O reference convention.
 
 The key issue is energy convention compatibility. The `mldft` O2 calculation is
 an all-electron molecular calculation, while the Mg slab and Mg+O adsorbed
 energies in the current benchmark are QE/DFTpy pseudopotential-style energies.
 Their absolute total-energy zeros cannot be mixed directly.
 
-## Calibration
+## Diagnostic Shift
 
-The calibrated oxygen chemical potential is:
+The diagnostic shift used here is:
 
 ```text
 mu_O = 1/2 E_MLDFT(O2) + delta_mu_O
@@ -20,7 +27,8 @@ mu_O = 1/2 E_MLDFT(O2) + delta_mu_O
 
 where `delta_mu_O` shifts the all-electron half-O2 value onto the current
 QE/PBE isolated-O-atom reference convention used by the existing adsorption
-labels.
+labels. This is a bookkeeping test, not a physical identification of atomic O
+with half an O2 molecule.
 
 | quantity | value |
 | --- | ---: |
@@ -40,7 +48,7 @@ benchmark.
 
 ## Hybrid Candidate
 
-The benchmarked hybrid candidate uses:
+The diagnostic hybrid candidate uses:
 
 ```text
 E_ads = E_WT(Mg slab + O) - E_WT(clean Mg slab) - mu_O_calibrated
@@ -62,7 +70,7 @@ scripts/build_mofdft_hybrid_from_energy.sh \
   1483.1679993327735
 ```
 
-## Benchmark Against KSDFT Adsorption Labels
+## Invalid Cross-Convention Comparison
 
 | metric | value |
 | --- | ---: |
@@ -76,27 +84,34 @@ scripts/build_mofdft_hybrid_from_energy.sh \
 | top-1 match | no |
 
 These values match the earlier `wt_slab_ks_o_oracle` diagnostic because the
-calibrated MLDFT half-O2 reference has been shifted exactly onto the same QE O
-atom reference energy.
+half-O2 number was shifted exactly onto the same QE O atom reference energy.
+They should not be interpreted as an O2-referenced adsorption benchmark.
 
 ## Interpretation
 
-The calibrated-reference mode solves the immediate software integration
-problem: a real MLDFT molecular energy can now be passed through the hybrid
-adsorption workflow with an explicit convention shift.
+The explicit energy-shift mode is still useful for software integration tests,
+but this particular O2-to-O-atom shift is not a valid physical treatment of
+oxygen.
 
-It does not solve the main accuracy problem. Replacing only the isolated oxygen
-reference applies a constant shift to every adsorption structure. Therefore it
-can reduce the absolute raw adsorption-energy offset, but it cannot improve the
-relative ranking, Spearman correlation, top-k agreement, or site selectivity.
+Replacing only the oxygen reference applies a constant shift to every adsorption
+structure. Therefore it cannot improve the relative ranking, Spearman
+correlation, top-k agreement, or site selectivity.
 
 The remaining error is dominated by the adsorbed Mg+O total energy evaluated
 with the current WT OFDFT setup.
 
-## Next Research Step
+## Corrected Research Step
 
-The next technically meaningful step should target the adsorbed interface
-energy, not only the isolated molecule reference. The most useful branches are:
+The corrected workflow must keep two branches separate:
+
+- Atomic-O reference branch: compare against the existing
+  `mg0001_o_pilot_all50_ks_adsorption.jsonl` labels, and supply an atomic-O
+  reference from a method that can represent the O atom consistently.
+- O2 chemical-potential branch: compute or build KSDFT truth with the same
+  `1/2 E(O2)` reference before comparing adsorption energies.
+
+After the reference convention is correct, the next technically meaningful step
+should target the adsorbed interface energy. The most useful branches are:
 
 - run additional KEDFs such as LMGP/MGP/MGPA/HC-style candidates on the same
   adsorbed Mg+O structures and compare adsorption ranking;

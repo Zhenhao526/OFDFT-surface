@@ -1,5 +1,10 @@
 # KSDFT Benchmark: ksdft
 
+Warning: this is a reference-mismatch diagnostic, not a physical benchmark.
+The truth labels use an isolated atomic-O reference, while the input molecular
+energy was half-O2 shifted onto that atomic reference. Atomic O and `1/2 O2`
+must be handled as separate reference conventions.
+
 - Truth records: 50
 - Truth records with energy: 50
 

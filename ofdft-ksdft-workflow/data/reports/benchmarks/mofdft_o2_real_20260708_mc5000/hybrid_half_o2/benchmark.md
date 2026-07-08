@@ -1,5 +1,9 @@
 # KSDFT Benchmark: ksdft
 
+Warning: this is a cross-convention diagnostic, not a physical benchmark. The
+truth labels use an isolated atomic-O reference, while this candidate uses a
+half-O2 molecular reference. Atomic O and `1/2 O2` must be handled separately.
+
 - Truth records: 50
 - Truth records with energy: 50
 

@@ -82,4 +82,4 @@ PY
   O2 \
   "$OUT_DIR/hybrid_half_o2"
 
-echo "Wrote MLDFT O2 reference and hybrid benchmark to $OUT_DIR"
+echo "Wrote MLDFT O2 reference and half-O2 chemical-potential candidate to $OUT_DIR"

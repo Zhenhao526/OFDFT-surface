@@ -13,11 +13,16 @@ Examples:
   # Half-O2 reference from external M-OFDFT:
   scripts/build_mofdft_hybrid_from_energy.sh -1120.0 0.5 half_o2_mofdft O2 data/reports/benchmarks/mofdft_half_o2_hybrid
 
-  # Half-O2 reference shifted onto the current QE/DFTpy O-atom reference convention:
-  scripts/build_mofdft_hybrid_from_energy.sh -1120.0 0.5 half_o2_mofdft_calibrated O2 data/reports/benchmarks/mofdft_half_o2_calibrated 5.0
+  # Atomic-O reference from external M-OFDFT with an explicit calibration shift:
+  scripts/build_mofdft_hybrid_from_energy.sh -560.0 1.0 o_atom_mofdft_calibrated O data/reports/benchmarks/mofdft_o_atom_calibrated 5.0
 
 The script keeps WT for the Mg slab and WT for the adsorbed Mg+O structures,
 then replaces only the adsorbate reference with the supplied external energy.
+
+Only FORMULA=O is benchmarked against the default Mg(0001)+O KSDFT labels,
+because those labels use an isolated O-atom reference. FORMULA=O2 is treated as
+a separate oxygen chemical-potential reference and requires an O2-referenced
+KSDFT truth file before benchmarking.
 EOF
 }
 
@@ -41,9 +46,23 @@ cd "$ROOT_DIR"
 
 ADSORBED="data/processed/screens/mg0001_o_pilot_all_candidate_dftpy_pbe_adsorption.jsonl"
 WT_REFS="data/processed/screens/mg0001_o_pilot_references_dftpy_pbe_wt_atomic_m100.jsonl"
-TRUTH="data/processed/labels/mg0001_o_pilot_all50_ks_adsorption.jsonl"
+DEFAULT_ATOMIC_TRUTH="data/processed/labels/mg0001_o_pilot_all50_ks_adsorption.jsonl"
 REFERENCE_JSONL="$OUT_DIR/mofdft_adsorbate_reference.jsonl"
 HYBRID_JSONL="$OUT_DIR/wt_mg_mofdft_adsorbate.jsonl"
+REFERENCE_KIND="${REFERENCE_KIND:-}"
+
+if [[ -z "$REFERENCE_KIND" ]]; then
+  if [[ "$FORMULA" == "O" ]]; then
+    REFERENCE_KIND="isolated_adsorbate"
+  else
+    REFERENCE_KIND="oxygen_chemical_potential"
+  fi
+fi
+
+TRUTH="${TRUTH:-}"
+if [[ -z "$TRUTH" && "$FORMULA" == "O" && "$REFERENCE_KIND" == "isolated_adsorbate" ]]; then
+  TRUTH="$DEFAULT_ATOMIC_TRUTH"
+fi
 
 mkdir -p "$OUT_DIR"
 
@@ -54,6 +73,7 @@ mkdir -p "$OUT_DIR"
   --reference-id "$REFERENCE_ID" \
   --adsorbate O \
   --formula "$FORMULA" \
+  --reference-kind "$REFERENCE_KIND" \
   --backend mofdft \
   --candidate-name mofdft_adsorbate_reference \
   --reference-convention "${FORMULA}_scale_${ENERGY_SCALE}_shift_${ENERGY_SHIFT_EV}" \
@@ -68,14 +88,29 @@ mkdir -p "$OUT_DIR"
   --adsorbed-source wt_adsorbed \
   --slab-source wt_mg_slab \
   --adsorbate-source mofdft_adsorbate \
+  --adsorbate-reference-kind "$REFERENCE_KIND" \
   --adsorbate-reference-id "$REFERENCE_ID" \
   --out "$HYBRID_JSONL"
 
-"$PYTHON_BIN" -m ofks.workflows.benchmark_algorithms \
-  --truth "$TRUTH" \
-  --candidate "wt_mg_mofdft_adsorbate=$HYBRID_JSONL" \
-  --out-json "$OUT_DIR/benchmark.json" \
-  --out-md "$OUT_DIR/benchmark.md" \
-  --out-csv "$OUT_DIR/benchmark.csv"
+if [[ -n "$TRUTH" ]]; then
+  "$PYTHON_BIN" -m ofks.workflows.benchmark_algorithms \
+    --truth "$TRUTH" \
+    --candidate "wt_mg_mofdft_adsorbate=$HYBRID_JSONL" \
+    --out-json "$OUT_DIR/benchmark.json" \
+    --out-md "$OUT_DIR/benchmark.md" \
+    --out-csv "$OUT_DIR/benchmark.csv"
+else
+  cat > "$OUT_DIR/benchmark_skipped.md" <<EOF
+# Benchmark Skipped
 
-echo "Wrote M-OFDFT hybrid candidate and benchmark to $OUT_DIR"
+The generated reference uses \`FORMULA=$FORMULA\` and
+\`REFERENCE_KIND=$REFERENCE_KIND\`.
+
+The default Mg(0001)+O KSDFT labels use an isolated O-atom reference, so this
+candidate was not benchmarked automatically. Provide a compatible truth file via
+\`TRUTH=/path/to/o2_referenced_truth.jsonl\` before comparing adsorption
+energies.
+EOF
+fi
+
+echo "Wrote M-OFDFT hybrid candidate to $OUT_DIR"
