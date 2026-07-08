@@ -1,0 +1,48 @@
+Running OFDFT calculation for o2.xyz
+
+Molecule
+Charge: 0
+2
+XYZ from PySCF
+O           0.00000        0.00000        0.00000
+O           0.00000        0.00000        1.20750
+
+CONFIGURATION:
+ - Base args -
+xyzfile: ('/mnt/afs/home/xiazhenhao/ofdft-ksdft-all50-20260708/data/reports/benchmarks/mofdft_o2_real_20260708_mc5000/o2.xyz',)
+charge: 0
+initialization: sad_default
+normalize_initial_guess: True
+save_result: True
+ks_basis: None
+proj_minao_module: None
+sad_guess_kwargs: None
+disable_printing: None
+
+ - Model args -
+model: str25_qm9
+use_last_ckpt: True
+device: cuda
+transform_device: cpu
+negative_integrated_density_penalty_weight: 0.0
+
+ - Optimizer args -
+optimizer: gradient-descent-torch
+max_cycle: 5000
+convergence_tolerance: 0.0001
+lr: 0.001
+momentum: 0.9
+betas: (0.9, 0.999)
+
+OFDFT calculation converged.
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ Contribution       ┃ Energy [Ha] ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ nuclear_repulsion  │    28.04749 │
+│ kin_plus_xc        │   132.82687 │
+│ hartree            │   100.76437 │
+│ nuclear_attraction │  -411.79851 │
+├────────────────────┼─────────────┤
+│ electronic_energy  │  -178.20726 │
+│ total_energy       │  -150.15978 │
+└────────────────────┴─────────────┘

@@ -1,0 +1,19 @@
+{
+  "converged": true,
+  "electronic_energy_ha": -178.20726300995506,
+  "energies_ha": {
+    "hartree": 100.76437206024401,
+    "kin_plus_xc": 132.82687352797956,
+    "nuclear_attraction": -411.7985085981786,
+    "nuclear_repulsion": 28.047487783751553
+  },
+  "final_grad_norm": 9.986e-05,
+  "formula": "O2",
+  "geometry": "O-O 1.2075 Angstrom",
+  "half_o2_energy_ev": -2043.0278211454815,
+  "method": "mldft",
+  "model": "str25_qm9",
+  "spin_note": "mldft CLI run is closed-shell/singlet because spin is not exposed by the CLI; O2 physical ground state is triplet.",
+  "total_energy_ev": -4086.055642290963,
+  "total_energy_ha": -150.1597752262035
+}
