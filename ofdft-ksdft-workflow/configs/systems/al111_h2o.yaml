@@ -1,0 +1,22 @@
+name: al111_h2o
+surface:
+  element: Al
+  miller: [1, 1, 1]
+  size: [4, 4, 4]
+  vacuum_angstrom: 18.0
+  fixed_layers: 2
+adsorbate:
+  name: H2O
+  orientations:
+    - dipole_down
+    - dipole_up
+    - flat
+  heights_angstrom: [2.0, 2.4, 2.8, 3.2]
+placement:
+  sites: [top, bridge, fcc, hcp]
+  lateral_jitter_angstrom: 0.0
+deduplication:
+  distance_tolerance_angstrom: 0.15
+references:
+  slab_id: al111_clean_4x4x4
+  adsorbate_id: h2o_gas

@@ -1,0 +1,54 @@
+[
+  {
+    "fold": 0,
+    "n_features": 11,
+    "n_test": 3,
+    "n_train": 9,
+    "test_structure_ids": [
+      "0173b205f6a5e0d7",
+      "5d6c0ab5cb071bfa",
+      "9ed899052c1ede60"
+    ],
+    "train_mae_ev": 0.38058171948219727,
+    "train_rmse_ev": 0.47282034014415764
+  },
+  {
+    "fold": 1,
+    "n_features": 11,
+    "n_test": 3,
+    "n_train": 9,
+    "test_structure_ids": [
+      "1b6f66e847adf264",
+      "636c3943e12895cb",
+      "a2330293e814d720"
+    ],
+    "train_mae_ev": 0.47526324080912574,
+    "train_rmse_ev": 0.5290833375145051
+  },
+  {
+    "fold": 2,
+    "n_features": 11,
+    "n_test": 3,
+    "n_train": 9,
+    "test_structure_ids": [
+      "26610f4a86dc91d1",
+      "76c2512dfce874bd",
+      "f67b4fe8525ec26c"
+    ],
+    "train_mae_ev": 0.3673781410949112,
+    "train_rmse_ev": 0.46385620689308893
+  },
+  {
+    "fold": 3,
+    "n_features": 11,
+    "n_test": 3,
+    "n_train": 9,
+    "test_structure_ids": [
+      "3495ef2ffd6cb58f",
+      "7e0cb75306f47f6f",
+      "fb75a97fd775c76d"
+    ],
+    "train_mae_ev": 0.43091274818820263,
+    "train_rmse_ev": 0.5047407845494961
+  }
+]

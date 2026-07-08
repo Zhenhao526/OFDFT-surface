@@ -1,0 +1,67 @@
+{
+  "algorithms": [
+    {
+      "candidate_converged_records": 2,
+      "candidate_runtime_median_seconds": 2.079437708540354,
+      "candidate_runtime_total_seconds": 4.158875417080708,
+      "energy_aligned_mae_ev": 7.0686914659891045,
+      "energy_aligned_max_abs_error_ev": 7.0686914659891045,
+      "energy_aligned_rmse_ev": 7.0686914659891045,
+      "energy_offset_ev": -635.890184186559,
+      "energy_raw_mae_ev": 635.890184186559,
+      "energy_raw_max_abs_error_ev": 642.9588756525482,
+      "energy_raw_mean_signed_error_ev": -635.890184186559,
+      "energy_raw_rmse_ev": 635.9294715169736,
+      "matched_candidate_converged": 2,
+      "matched_structure_ids": [
+        "a2330293e814d720",
+        "f67b4fe8525ec26c"
+      ],
+      "max_force_mae_ev_per_ang": 1358.2845560531425,
+      "max_force_rmse_ev_per_ang": 1359.174238848987,
+      "n_candidate_records": 2,
+      "n_energy_pairs": 2,
+      "n_matched": 2,
+      "name": "dftpy_pbe_raw",
+      "spearman_energy": -0.9999999999999998,
+      "speedup_vs_truth": 68.0670333288883,
+      "top1_match": false,
+      "top3_recall": 1.0,
+      "truth_runtime_median_seconds": 141.54115581256337,
+      "truth_runtime_total_seconds": 283.08231162512675
+    },
+    {
+      "candidate_converged_records": 2,
+      "candidate_runtime_median_seconds": 2.079437708540354,
+      "candidate_runtime_total_seconds": 4.158875417080708,
+      "energy_aligned_mae_ev": 65.2601405801579,
+      "energy_aligned_max_abs_error_ev": 65.2601405801579,
+      "energy_aligned_rmse_ev": 65.2601405801579,
+      "energy_offset_ev": 9.030089332463831,
+      "energy_raw_mae_ev": 65.2601405801579,
+      "energy_raw_max_abs_error_ev": 74.29022991262173,
+      "energy_raw_mean_signed_error_ev": 9.030089332463831,
+      "energy_raw_rmse_ev": 65.88192818895216,
+      "matched_candidate_converged": 2,
+      "matched_structure_ids": [
+        "a2330293e814d720",
+        "f67b4fe8525ec26c"
+      ],
+      "max_force_mae_ev_per_ang": 1358.2845560531425,
+      "max_force_rmse_ev_per_ang": 1359.174238848987,
+      "n_candidate_records": 2,
+      "n_energy_pairs": 2,
+      "n_matched": 2,
+      "name": "dftpy_pbe_delta",
+      "spearman_energy": 0.9999999999999998,
+      "speedup_vs_truth": 68.0670333288883,
+      "top1_match": true,
+      "top3_recall": 1.0,
+      "truth_runtime_median_seconds": 141.54115581256337,
+      "truth_runtime_total_seconds": 283.08231162512675
+    }
+  ],
+  "truth_energy_records": 2,
+  "truth_name": "ksdft_qe_pbe_scf_pilot",
+  "truth_records": 2
+}

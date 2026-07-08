@@ -1,0 +1,17 @@
+.venv/
+.uv-cache/
+.pytest_cache/
+.micromamba/
+__pycache__/
+*.pyc
+
+cache/
+_runtime/
+
+data/raw/ksdft/**
+!data/raw/ksdft/
+!data/raw/ksdft/*_qe_run_results.jsonl
+
+*.egg-info/
+dist/
+build/

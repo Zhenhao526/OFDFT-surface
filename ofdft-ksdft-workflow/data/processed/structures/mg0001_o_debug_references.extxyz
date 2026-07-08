@@ -1,0 +1,17 @@
+12
+Lattice="6.42 0.0 0.0 3.21 5.559883092296095 0.0 0.0 0.0 25.213039999999996" Properties=species:S:1:pos:R:3:move_mask:L:1:tags:I:1 surface_element=Mg miller="_JSON [0, 0, 0, 1]" slab_size="_JSON [2, 2, 3]" vacuum_angstrom=10.0 fixed_layers=1 fixed_atom_indices="_JSON [0, 1, 2, 3]" system_name=mg0001_o_debug reference_kind=clean_slab adsorbate=none reference_id=mg0001_clean_debug structure_id=e3bdfcd7612a7a40 pbc="T T T"
+Mg       0.00000000       0.00000000      10.00000000  F        3
+Mg       3.21000000       0.00000000      10.00000000  F        3
+Mg       1.60500000       2.77994155      10.00000000  F        3
+Mg       4.81500000       2.77994155      10.00000000  F        3
+Mg       0.00000000       1.85329436      12.60652000  T        2
+Mg       3.21000000       1.85329436      12.60652000  T        2
+Mg       1.60500000       4.63323591      12.60652000  T        2
+Mg       4.81500000       4.63323591      12.60652000  T        2
+Mg       0.00000000       0.00000000      15.21304000  T        1
+Mg       3.21000000       0.00000000      15.21304000  T        1
+Mg       1.60500000       2.77994155      15.21304000  T        1
+Mg       4.81500000       2.77994155      15.21304000  T        1
+1
+Lattice="12.0 0.0 0.0 0.0 12.0 0.0 0.0 0.0 12.0" Properties=species:S:1:pos:R:3 adsorbate_name=O system_name=mg0001_o_debug reference_kind=isolated_adsorbate adsorbate=O reference_id=o_atom molecule_box_angstrom=12.0 structure_id=a2f8b4e1195f920c pbc="T T T"
+O        6.00000000       6.00000000       6.00000000

@@ -1,0 +1,2 @@
+{"adsorbate": "none", "index": 0, "molecule_box_angstrom": null, "reference_id": "mg0001_clean_3x3x3", "reference_kind": "clean_slab", "selection_rank": 0, "structure_id": "d78831db0d40c74b", "system_name": "mg0001_o_pilot"}
+{"adsorbate": "O", "index": 1, "molecule_box_angstrom": 12.0, "reference_id": "o_atom", "reference_kind": "isolated_adsorbate", "selection_rank": 1, "structure_id": "a2f8b4e1195f920c", "system_name": "mg0001_o_pilot"}

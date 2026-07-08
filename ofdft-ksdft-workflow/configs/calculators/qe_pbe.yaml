@@ -1,0 +1,19 @@
+backend: qe
+xc: PBE
+dispersion: null
+pseudo_dir: ./pseudo
+pseudopotentials:
+  Al: Al.pbe-n-kjpaw_psl.1.0.0.UPF
+  Mg: Mg.pbe-spnl-kjpaw_psl.1.0.0.UPF
+  H: H.pbe-kjpaw_psl.1.0.0.UPF
+  O: O.pbe-n-kjpaw_psl.1.0.0.UPF
+ecutwfc_ry: 50
+ecutrho_ry: 400
+kpoints: [3, 3, 1]
+smearing:
+  type: cold
+  degauss_ry: 0.02
+relax:
+  fmax_ev_per_ang: 0.05
+  max_steps: 120
+dipole_correction: true

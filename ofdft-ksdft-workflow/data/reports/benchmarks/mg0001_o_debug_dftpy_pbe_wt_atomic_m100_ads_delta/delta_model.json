@@ -1,0 +1,34 @@
+{
+  "candidate_energy_key": "adsorption_energy_ev",
+  "coefficients": [
+    -3.2544874385539515,
+    -1.007180718746461,
+    0.6875032911355738,
+    -0.001309996384430523,
+    -1.5382398413578306e-10,
+    -1.5285056549698736e-10,
+    0.05291590940822477,
+    -0.4682992786674056,
+    -0.2673121021298641,
+    0.6826954712348225,
+    -1.53718243499258e-10
+  ],
+  "corrected_energy_key": "corrected_adsorption_energy_ev",
+  "delta_key": "delta_adsorption_energy_pred_ev",
+  "feature_names": [
+    "bias",
+    "adsorption_energy_ev",
+    "height_angstrom",
+    "max_force_ev_per_ang",
+    "system_name=mg0001_o_debug",
+    "adsorbate=O",
+    "site=bridge",
+    "site=fcc",
+    "site=hcp",
+    "site=top",
+    "orientation=atom"
+  ],
+  "model_type": "ridge_linear_delta_energy",
+  "ridge_alpha": 1.0,
+  "target_name": "delta_adsorption_energy_ev"
+}

@@ -1,0 +1,9 @@
+backend: dftpy
+element: Mg
+kedf: WT
+xc: PBE
+grid_spacing_angstrom: 0.18
+pseudopotential: Mg.local.recpot
+relax:
+  fmax_ev_per_ang: 0.08
+  max_steps: 80

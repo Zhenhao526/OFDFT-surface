@@ -1,0 +1,69 @@
+{
+  "algorithms": [
+    {
+      "candidate_runtime_median_seconds": 1.2416043318808079e-05,
+      "candidate_runtime_total_seconds": 7.229077164083719e-05,
+      "energy_aligned_mae_ev": 1.0575069851103762,
+      "energy_aligned_max_abs_error_ev": 2.166369142869371,
+      "energy_aligned_rmse_ev": 1.2896061520780047,
+      "energy_offset_ev": 23575.334083419883,
+      "energy_raw_mae_ev": 23575.334083419883,
+      "energy_raw_max_abs_error_ev": 23577.500452562752,
+      "energy_raw_mean_signed_error_ev": 23575.334083419883,
+      "energy_raw_rmse_ev": 23575.33411869158,
+      "matched_structure_ids": [
+        "af93973140fe595b",
+        "c0e80c3f8db2ae82",
+        "cf3dec1024a17bba",
+        "d6956ca864e76798",
+        "d934123ad1c64e6c"
+      ],
+      "max_force_mae_ev_per_ang": 3.490486134314535,
+      "max_force_rmse_ev_per_ang": 3.571994558718677,
+      "n_candidate_records": 5,
+      "n_energy_pairs": 5,
+      "n_matched": 5,
+      "name": "raw_fast",
+      "spearman_energy": -0.8999999999999998,
+      "speedup_vs_truth": 1281911.5108015968,
+      "top1_match": false,
+      "top3_recall": 0.3333333333333333,
+      "truth_runtime_median_seconds": 18.607350875041448,
+      "truth_runtime_total_seconds": 92.67037229111884
+    },
+    {
+      "candidate_runtime_median_seconds": 1.2416043318808079e-05,
+      "candidate_runtime_total_seconds": 7.229077164083719e-05,
+      "energy_aligned_mae_ev": 1.2203698583738878,
+      "energy_aligned_max_abs_error_ev": 2.184332146742963,
+      "energy_aligned_rmse_ev": 1.374847768600053,
+      "energy_offset_ev": -0.3684701560239773,
+      "energy_raw_mae_ev": 1.2940638895786833,
+      "energy_raw_max_abs_error_ev": 1.939492445311771,
+      "energy_raw_mean_signed_error_ev": -0.3684701560239773,
+      "energy_raw_rmse_ev": 1.4233680629776966,
+      "matched_structure_ids": [
+        "af93973140fe595b",
+        "c0e80c3f8db2ae82",
+        "cf3dec1024a17bba",
+        "d6956ca864e76798",
+        "d934123ad1c64e6c"
+      ],
+      "max_force_mae_ev_per_ang": 3.490486134314535,
+      "max_force_rmse_ev_per_ang": 3.571994558718677,
+      "n_candidate_records": 5,
+      "n_energy_pairs": 5,
+      "n_matched": 5,
+      "name": "delta_corrected",
+      "spearman_energy": -0.19999999999999996,
+      "speedup_vs_truth": 1281911.5108015968,
+      "top1_match": false,
+      "top3_recall": 0.3333333333333333,
+      "truth_runtime_median_seconds": 18.607350875041448,
+      "truth_runtime_total_seconds": 92.67037229111884
+    }
+  ],
+  "truth_energy_records": 5,
+  "truth_name": "ksdft_qe_pbe_debug",
+  "truth_records": 5
+}

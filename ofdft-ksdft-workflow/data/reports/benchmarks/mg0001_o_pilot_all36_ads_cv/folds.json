@@ -1,0 +1,78 @@
+[
+  {
+    "fold": 0,
+    "n_features": 12,
+    "n_test": 9,
+    "n_train": 27,
+    "test_structure_ids": [
+      "0173b205f6a5e0d7",
+      "22438c289ddb70f3",
+      "3495ef2ffd6cb58f",
+      "47925b0a9b788d7c",
+      "5d6c0ab5cb071bfa",
+      "6c9de9732ccb462b",
+      "7dbf152ecbb0fdcb",
+      "9ed899052c1ede60",
+      "d129ec3f37fc8539"
+    ],
+    "train_mae_ev": 0.2726148403577074,
+    "train_rmse_ev": 0.3651703832142655
+  },
+  {
+    "fold": 1,
+    "n_features": 12,
+    "n_test": 9,
+    "n_train": 27,
+    "test_structure_ids": [
+      "0aa0b2a8b9e7bb13",
+      "26610f4a86dc91d1",
+      "3d67f03958e4b24f",
+      "48e13434b8f772fe",
+      "61592c9ce5acb3bd",
+      "71b0e55452147998",
+      "7e0cb75306f47f6f",
+      "a2330293e814d720",
+      "f67b4fe8525ec26c"
+    ],
+    "train_mae_ev": 0.35813486562860963,
+    "train_rmse_ev": 0.40227741800937095
+  },
+  {
+    "fold": 2,
+    "n_features": 12,
+    "n_test": 9,
+    "n_train": 27,
+    "test_structure_ids": [
+      "0f49ac057057c823",
+      "306ad89390cf1f45",
+      "3e94dc98e10574a6",
+      "54b710a6fadb6bb5",
+      "636c3943e12895cb",
+      "76c2512dfce874bd",
+      "7e2f1fb6c92ddf2f",
+      "ad9ffa908746cb59",
+      "fb75a97fd775c76d"
+    ],
+    "train_mae_ev": 0.3148018814520497,
+    "train_rmse_ev": 0.3778373396772752
+  },
+  {
+    "fold": 3,
+    "n_features": 12,
+    "n_test": 9,
+    "n_train": 27,
+    "test_structure_ids": [
+      "1b6f66e847adf264",
+      "32673556c4a07276",
+      "46256f03336b7973",
+      "5938799807f78886",
+      "6abb28fe07b26672",
+      "79918021a8153bc5",
+      "8e7572963539f914",
+      "b3cb5f0906f9a78d",
+      "fbcecd84fda13ba1"
+    ],
+    "train_mae_ev": 0.28223637198975643,
+    "train_rmse_ev": 0.3390558972391279
+  }
+]

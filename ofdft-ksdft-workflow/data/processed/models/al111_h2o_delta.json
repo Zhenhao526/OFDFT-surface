@@ -1,0 +1,25 @@
+{
+  "coefficients": [
+    -216.81017462849474,
+    1.203538239227789e-13,
+    -3.903359054634571e-13,
+    2.388271193467644e-14,
+    -1.4904362915494224e-13,
+    -1.444245887073347e-13,
+    -1.702178923420225e-13,
+    -1.9256611827644626e-13
+  ],
+  "feature_names": [
+    "bias",
+    "total_energy_ev",
+    "height_angstrom",
+    "max_force_ev_per_ang",
+    "system_name=al111_h2o",
+    "adsorbate=H2O",
+    "site=fcc",
+    "orientation=dipole_down"
+  ],
+  "model_type": "ridge_linear_delta_energy",
+  "ridge_alpha": 1.0,
+  "target_name": "delta_energy_ev"
+}

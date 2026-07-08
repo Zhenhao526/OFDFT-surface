@@ -1,0 +1,18 @@
+backend: fake
+name: deterministic-fast-screen
+site_offsets_ev:
+  top: 0.08
+  bridge: 0.03
+  fcc: 0.00
+  hcp: 0.02
+orientation_offsets_ev:
+  atom: 0.00
+  default: 0.00
+  dipole_down: -0.04
+  dipole_up: 0.06
+  flat: 0.01
+height_model:
+  optimum_angstrom: 2.45
+  stiffness_ev_per_ang2: 0.18
+force_model:
+  max_force_scale_ev_per_ang: 0.12

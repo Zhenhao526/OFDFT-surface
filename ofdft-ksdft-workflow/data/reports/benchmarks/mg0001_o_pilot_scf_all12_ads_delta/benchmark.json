@@ -1,0 +1,71 @@
+{
+  "algorithms": [
+    {
+      "adsorption_energy_aligned_mae_ev": 45.15511585803688,
+      "adsorption_energy_aligned_max_abs_error_ev": 84.61596425999232,
+      "adsorption_energy_aligned_rmse_ev": 53.315541505028925,
+      "adsorption_energy_offset_ev": 185.37031070186822,
+      "adsorption_energy_raw_mae_ev": 185.37031070186822,
+      "adsorption_energy_raw_max_abs_error_ev": 269.98627496186054,
+      "adsorption_energy_raw_mean_signed_error_ev": 185.37031070186822,
+      "adsorption_energy_raw_rmse_ev": 192.8851965695699,
+      "adsorption_spearman_energy": 0.5999999999999999,
+      "adsorption_top1_match": false,
+      "adsorption_top3_recall": 0.6666666666666666,
+      "candidate_converged_records": 4,
+      "candidate_runtime_median_seconds": 2.091265687486157,
+      "candidate_runtime_total_seconds": 8.582147667068057,
+      "matched_candidate_converged": 4,
+      "matched_structure_ids": [
+        "9ed899052c1ede60",
+        "a2330293e814d720",
+        "f67b4fe8525ec26c",
+        "fb75a97fd775c76d"
+      ],
+      "max_force_mae_ev_per_ang": 1330.2048166370967,
+      "max_force_rmse_ev_per_ang": 1330.9554130679358,
+      "n_candidate_records": 4,
+      "n_energy_pairs": 0,
+      "n_matched": 4,
+      "name": "dftpy_pbe_ads_raw",
+      "speedup_vs_truth": 64.10325022069918,
+      "truth_runtime_median_seconds": 139.09988037502626,
+      "truth_runtime_total_seconds": 550.1435593330534
+    },
+    {
+      "adsorption_energy_aligned_mae_ev": 4.3245814810062555,
+      "adsorption_energy_aligned_max_abs_error_ev": 8.649162962012511,
+      "adsorption_energy_aligned_rmse_ev": 5.049339720698433,
+      "adsorption_energy_offset_ev": -3.6330493630178324,
+      "adsorption_energy_raw_mae_ev": 3.80555783833384,
+      "adsorption_energy_raw_max_abs_error_ev": 12.282212325030343,
+      "adsorption_energy_raw_mean_signed_error_ev": -3.6330493630178324,
+      "adsorption_energy_raw_rmse_ev": 6.22052082137398,
+      "adsorption_spearman_energy": 0.3999999999999999,
+      "adsorption_top1_match": false,
+      "adsorption_top3_recall": 1.0,
+      "candidate_converged_records": 4,
+      "candidate_runtime_median_seconds": 2.091265687486157,
+      "candidate_runtime_total_seconds": 8.582147667068057,
+      "matched_candidate_converged": 4,
+      "matched_structure_ids": [
+        "9ed899052c1ede60",
+        "a2330293e814d720",
+        "f67b4fe8525ec26c",
+        "fb75a97fd775c76d"
+      ],
+      "max_force_mae_ev_per_ang": 1330.2048166370967,
+      "max_force_rmse_ev_per_ang": 1330.9554130679358,
+      "n_candidate_records": 4,
+      "n_energy_pairs": 0,
+      "n_matched": 4,
+      "name": "dftpy_pbe_ads_delta",
+      "speedup_vs_truth": 64.10325022069918,
+      "truth_runtime_median_seconds": 139.09988037502626,
+      "truth_runtime_total_seconds": 550.1435593330534
+    }
+  ],
+  "truth_energy_records": 4,
+  "truth_name": "ksdft_qe_pbe_scf_pilot_all12_adsorption",
+  "truth_records": 4
+}

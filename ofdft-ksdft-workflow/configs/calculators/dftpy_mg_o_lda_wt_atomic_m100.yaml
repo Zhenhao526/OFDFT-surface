@@ -1,0 +1,18 @@
+backend: dftpy
+name: dftpy_mg_o_lda_wt_atomic_m100
+kedf: WT
+xc: LDA
+grid_spacing_angstrom: 0.8
+pseudo_dir: pseudo
+pseudopotentials:
+  Mg: Mg.pbe-spnl-kjpaw_psl.1.0.0.UPF
+  O: O.pbe-n-kjpaw_psl.1.0.0.UPF
+density_initial: atomic
+reuse_density: false
+quiet: true
+optimization:
+  method: CG-HS
+  algorithm: EMM
+  maxiter: 100
+  maxfun: 100
+  econv: 1.0e-5

@@ -1,0 +1,70 @@
+[
+  {
+    "fold": 0,
+    "n_features": 12,
+    "n_test": 7,
+    "n_train": 21,
+    "test_structure_ids": [
+      "0173b205f6a5e0d7",
+      "26610f4a86dc91d1",
+      "3e94dc98e10574a6",
+      "5d6c0ab5cb071bfa",
+      "6c9de9732ccb462b",
+      "7e2f1fb6c92ddf2f",
+      "d129ec3f37fc8539"
+    ],
+    "train_mae_ev": 0.2511556969322915,
+    "train_rmse_ev": 0.3580541776349071
+  },
+  {
+    "fold": 1,
+    "n_features": 12,
+    "n_test": 7,
+    "n_train": 21,
+    "test_structure_ids": [
+      "0aa0b2a8b9e7bb13",
+      "306ad89390cf1f45",
+      "46256f03336b7973",
+      "61592c9ce5acb3bd",
+      "76c2512dfce874bd",
+      "9ed899052c1ede60",
+      "f67b4fe8525ec26c"
+    ],
+    "train_mae_ev": 0.29756628154739434,
+    "train_rmse_ev": 0.3795374643447922
+  },
+  {
+    "fold": 2,
+    "n_features": 12,
+    "n_test": 7,
+    "n_train": 21,
+    "test_structure_ids": [
+      "1b6f66e847adf264",
+      "3495ef2ffd6cb58f",
+      "48e13434b8f772fe",
+      "636c3943e12895cb",
+      "7dbf152ecbb0fdcb",
+      "a2330293e814d720",
+      "fb75a97fd775c76d"
+    ],
+    "train_mae_ev": 0.3136153521885517,
+    "train_rmse_ev": 0.37784977986547164
+  },
+  {
+    "fold": 3,
+    "n_features": 12,
+    "n_test": 7,
+    "n_train": 21,
+    "test_structure_ids": [
+      "22438c289ddb70f3",
+      "3d67f03958e4b24f",
+      "54b710a6fadb6bb5",
+      "6abb28fe07b26672",
+      "7e0cb75306f47f6f",
+      "ad9ffa908746cb59",
+      "fbcecd84fda13ba1"
+    ],
+    "train_mae_ev": 0.37943807302494836,
+    "train_rmse_ev": 0.43279549078177015
+  }
+]

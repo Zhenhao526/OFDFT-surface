@@ -1,0 +1,24 @@
+.DS_Store
+
+# Python/build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Local environments and caches
+.venv/
+.uv-cache/
+.pytest_cache/
+.micromamba/
+cache/
+_runtime/
+
+# Project-local generated/runtime directories
+ofdft-ksdft-workflow/.venv/
+ofdft-ksdft-workflow/.uv-cache/
+ofdft-ksdft-workflow/.pytest_cache/
+ofdft-ksdft-workflow/.micromamba/
+ofdft-ksdft-workflow/cache/
+ofdft-ksdft-workflow/_runtime/

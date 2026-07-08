@@ -1,0 +1,22 @@
+backend: qe
+calculation: scf
+xc: PBE
+dispersion: null
+pseudo_dir: ./pseudo
+pseudopotentials:
+  Al: Al.pbe-n-kjpaw_psl.1.0.0.UPF
+  Mg: Mg.pbe-spnl-kjpaw_psl.1.0.0.UPF
+  H: H.pbe-kjpaw_psl.1.0.0.UPF
+  O: O.pbe-n-kjpaw_psl.1.0.0.UPF
+ecutwfc_ry: 30
+ecutrho_ry: 240
+kpoints: [1, 1, 1]
+smearing:
+  type: cold
+  degauss_ry: 0.02
+electrons:
+  conv_thr: 1.0d-4
+  mixing_beta: 0.35
+control:
+  nstep: 30
+dipole_correction: false

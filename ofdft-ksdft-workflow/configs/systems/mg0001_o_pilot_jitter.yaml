@@ -1,0 +1,20 @@
+name: mg0001_o_pilot_jitter
+surface:
+  element: Mg
+  miller: [0, 0, 0, 1]
+  size: [3, 3, 3]
+  vacuum_angstrom: 14.0
+  fixed_layers: 1
+adsorbate:
+  name: O
+  orientations:
+    - atom
+  heights_angstrom: [1.6, 2.0, 2.4]
+placement:
+  sites: [top, bridge, fcc, hcp]
+  lateral_jitter_angstrom: 0.25
+deduplication:
+  distance_tolerance_angstrom: 0.05
+references:
+  slab_id: mg0001_clean_3x3x3
+  adsorbate_id: o_atom

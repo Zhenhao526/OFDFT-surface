@@ -1,0 +1,41 @@
+{
+  "algorithms": [
+    {
+      "candidate_converged_records": 12,
+      "candidate_runtime_median_seconds": 2.091265687486157,
+      "candidate_runtime_total_seconds": 12.612406499916688,
+      "energy_aligned_mae_ev": 38.759611919694485,
+      "energy_aligned_max_abs_error_ev": 62.77809782372299,
+      "energy_aligned_rmse_ev": 44.85085938207035,
+      "energy_offset_ev": -580.1807778288252,
+      "energy_raw_mae_ev": 580.1807778288252,
+      "energy_raw_max_abs_error_ev": 642.9588756525482,
+      "energy_raw_mean_signed_error_ev": -580.1807778288252,
+      "energy_raw_rmse_ev": 581.9117927567466,
+      "matched_candidate_converged": 6,
+      "matched_structure_ids": [
+        "f67b4fe8525ec26c",
+        "a2330293e814d720",
+        "636c3943e12895cb",
+        "7e0cb75306f47f6f",
+        "9ed899052c1ede60",
+        "0173b205f6a5e0d7"
+      ],
+      "max_force_mae_ev_per_ang": 1320.2697477109339,
+      "max_force_rmse_ev_per_ang": 1320.8614790252102,
+      "n_candidate_records": 12,
+      "n_energy_pairs": 6,
+      "n_matched": 6,
+      "name": "dftpy_pbe_wt_atomic_m100",
+      "spearman_energy": -0.2,
+      "speedup_vs_truth": 64.08035823081147,
+      "top1_match": false,
+      "top3_recall": 0.3333333333333333,
+      "truth_runtime_median_seconds": 135.62232185399625,
+      "truth_runtime_total_seconds": 808.2075266672764
+    }
+  ],
+  "truth_energy_records": 6,
+  "truth_name": "ksdft_qe_pbe_scf_pilot",
+  "truth_records": 6
+}

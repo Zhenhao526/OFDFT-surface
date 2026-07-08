@@ -1,0 +1,58 @@
+[
+  {
+    "fold": 0,
+    "n_features": 12,
+    "n_test": 4,
+    "n_train": 12,
+    "test_structure_ids": [
+      "0173b205f6a5e0d7",
+      "26610f4a86dc91d1",
+      "636c3943e12895cb",
+      "9ed899052c1ede60"
+    ],
+    "train_mae_ev": 0.2909307449252978,
+    "train_rmse_ev": 0.44137888789810653
+  },
+  {
+    "fold": 1,
+    "n_features": 12,
+    "n_test": 4,
+    "n_train": 12,
+    "test_structure_ids": [
+      "0aa0b2a8b9e7bb13",
+      "3495ef2ffd6cb58f",
+      "6abb28fe07b26672",
+      "a2330293e814d720"
+    ],
+    "train_mae_ev": 0.4022822190141942,
+    "train_rmse_ev": 0.4984565552635034
+  },
+  {
+    "fold": 2,
+    "n_features": 12,
+    "n_test": 4,
+    "n_train": 12,
+    "test_structure_ids": [
+      "1b6f66e847adf264",
+      "3d67f03958e4b24f",
+      "76c2512dfce874bd",
+      "f67b4fe8525ec26c"
+    ],
+    "train_mae_ev": 0.41768804391376807,
+    "train_rmse_ev": 0.46281860979771905
+  },
+  {
+    "fold": 3,
+    "n_features": 12,
+    "n_test": 4,
+    "n_train": 12,
+    "test_structure_ids": [
+      "22438c289ddb70f3",
+      "5d6c0ab5cb071bfa",
+      "7e0cb75306f47f6f",
+      "fb75a97fd775c76d"
+    ],
+    "train_mae_ev": 0.38957883428542556,
+    "train_rmse_ev": 0.49337933022539465
+  }
+]

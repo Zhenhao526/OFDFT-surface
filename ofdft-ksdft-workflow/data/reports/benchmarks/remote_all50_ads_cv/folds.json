@@ -1,0 +1,102 @@
+[
+  {
+    "fold": 0,
+    "n_features": 12,
+    "n_test": 10,
+    "n_train": 40,
+    "test_structure_ids": [
+      "0173b205f6a5e0d7",
+      "18799da69ead3be3",
+      "26610f4a86dc91d1",
+      "3d67f03958e4b24f",
+      "54b710a6fadb6bb5",
+      "6a8fb628258f00a6",
+      "79918021a8153bc5",
+      "888219e924ca87f2",
+      "ad9ffa908746cb59",
+      "f36b1bcd35c8bdf9"
+    ],
+    "train_mae_ev": 0.27565506637061643,
+    "train_rmse_ev": 0.3367151255892312
+  },
+  {
+    "fold": 1,
+    "n_features": 12,
+    "n_test": 10,
+    "n_train": 40,
+    "test_structure_ids": [
+      "0199c00b22820d26",
+      "189ae59fca9f9df9",
+      "2d9196aa6d7e2257",
+      "3e94dc98e10574a6",
+      "5938799807f78886",
+      "6abb28fe07b26672",
+      "7dbf152ecbb0fdcb",
+      "8e7572963539f914",
+      "b3cb5f0906f9a78d",
+      "f5b49681ac2ee211"
+    ],
+    "train_mae_ev": 0.2810792113721412,
+    "train_rmse_ev": 0.3312569189657294
+  },
+  {
+    "fold": 2,
+    "n_features": 12,
+    "n_test": 10,
+    "n_train": 40,
+    "test_structure_ids": [
+      "0aa0b2a8b9e7bb13",
+      "1b6f66e847adf264",
+      "306ad89390cf1f45",
+      "46256f03336b7973",
+      "5d6c0ab5cb071bfa",
+      "6c9de9732ccb462b",
+      "7e0cb75306f47f6f",
+      "9a7283fc61f1d6da",
+      "d129ec3f37fc8539",
+      "f67b4fe8525ec26c"
+    ],
+    "train_mae_ev": 0.25811261842067734,
+    "train_rmse_ev": 0.3008438540414633
+  },
+  {
+    "fold": 3,
+    "n_features": 12,
+    "n_test": 10,
+    "n_train": 40,
+    "test_structure_ids": [
+      "0f49ac057057c823",
+      "2086432d65d5b674",
+      "32673556c4a07276",
+      "47925b0a9b788d7c",
+      "61592c9ce5acb3bd",
+      "71b0e55452147998",
+      "7e2f1fb6c92ddf2f",
+      "9ed899052c1ede60",
+      "e83ef44dd4753136",
+      "fb75a97fd775c76d"
+    ],
+    "train_mae_ev": 0.2582566063070182,
+    "train_rmse_ev": 0.30785794978706277
+  },
+  {
+    "fold": 4,
+    "n_features": 12,
+    "n_test": 10,
+    "n_train": 40,
+    "test_structure_ids": [
+      "122e3255b247ee60",
+      "22438c289ddb70f3",
+      "3495ef2ffd6cb58f",
+      "48e13434b8f772fe",
+      "636c3943e12895cb",
+      "76c2512dfce874bd",
+      "8656ded82956740a",
+      "a2330293e814d720",
+      "edeabe8388606624",
+      "fbcecd84fda13ba1"
+    ],
+    "train_mae_ev": 0.28398546906690497,
+    "train_rmse_ev": 0.3349664825726115
+  }
+]

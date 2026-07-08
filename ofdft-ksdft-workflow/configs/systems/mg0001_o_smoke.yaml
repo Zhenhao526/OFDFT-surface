@@ -1,0 +1,20 @@
+name: mg0001_o_smoke
+surface:
+  element: Mg
+  miller: [0, 0, 0, 1]
+  size: [2, 2, 3]
+  vacuum_angstrom: 10.0
+  fixed_layers: 1
+adsorbate:
+  name: O
+  orientations:
+    - atom
+  heights_angstrom: [2.0]
+placement:
+  sites: [hcp]
+  lateral_jitter_angstrom: 0.0
+deduplication:
+  distance_tolerance_angstrom: 0.15
+references:
+  slab_id: mg0001_clean_smoke
+  adsorbate_id: o_atom

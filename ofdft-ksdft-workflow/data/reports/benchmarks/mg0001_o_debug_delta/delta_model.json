@@ -1,0 +1,31 @@
+{
+  "coefficients": [
+    -23577.63211892481,
+    -0.10424365533242508,
+    0.9893036958737866,
+    -0.12939668695184992,
+    -1.8590275948049903e-10,
+    -1.8472981816114988e-10,
+    0.3810442524973041,
+    -0.6339383636031926,
+    -0.37511560738130356,
+    0.6280097183225735,
+    -1.4920974531875345e-10
+  ],
+  "feature_names": [
+    "bias",
+    "total_energy_ev",
+    "height_angstrom",
+    "max_force_ev_per_ang",
+    "system_name=mg0001_o_debug",
+    "adsorbate=O",
+    "site=bridge",
+    "site=fcc",
+    "site=hcp",
+    "site=top",
+    "orientation=atom"
+  ],
+  "model_type": "ridge_linear_delta_energy",
+  "ridge_alpha": 1.0,
+  "target_name": "delta_energy_ev"
+}

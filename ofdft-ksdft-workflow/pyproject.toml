@@ -1,0 +1,59 @@
+[project]
+name = "ofks"
+version = "0.1.0"
+description = "OFDFT-assisted KSDFT workflow for simple-metal surface adsorption screening"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "ase>=3.23",
+  "numpy>=1.23",
+  "pyyaml>=6.0",
+  "pydantic>=2.0",
+  "typer>=0.12",
+  "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+ml = [
+  "scikit-learn>=1.3",
+  "torch>=2.0",
+]
+ofdft = [
+  "dftpy>=2.2",
+]
+
+[project.scripts]
+ofks-generate = "ofks.workflows.generate_candidates:app"
+ofks-fast-screen = "ofks.workflows.run_fast_screen:app"
+ofks-active-select = "ofks.workflows.active_select:app"
+ofks-ks-validate = "ofks.workflows.run_ks_validation:app"
+ofks-parse-ks = "ofks.workflows.parse_ks_outputs:app"
+ofks-train-delta = "ofks.workflows.train_delta:app"
+ofks-summarize = "ofks.workflows.summarize:app"
+ofks-prepare-qe-runs = "ofks.workflows.prepare_qe_runs:app"
+ofks-check-qe-env = "ofks.workflows.check_qe_env:app"
+ofks-run-qe = "ofks.workflows.run_qe_jobs:app"
+ofks-benchmark = "ofks.workflows.benchmark_algorithms:app"
+ofks-evaluate-delta = "ofks.workflows.evaluate_delta_benchmark:app"
+ofks-sweep-dftpy = "ofks.workflows.sweep_dftpy_convergence:app"
+ofks-merge-candidate-labels = "ofks.workflows.merge_candidate_labels:app"
+ofks-add-adsorption-energy = "ofks.workflows.add_adsorption_energy:app"
+ofks-generate-references = "ofks.workflows.generate_references:app"
+ofks-formal-status = "ofks.workflows.formal_batch_status:app"
+ofks-evaluate-delta-cv = "ofks.workflows.evaluate_delta_cv:app"
+ofks-sample-structures = "ofks.workflows.sample_structures:app"
+ofks-combine-records = "ofks.workflows.combine_records:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ofks", "src/pylibxc"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

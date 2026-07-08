@@ -1,0 +1,47 @@
+{
+  "algorithms": [
+    {
+      "candidate_converged_records": 12,
+      "candidate_runtime_median_seconds": 2.1332778959767893,
+      "candidate_runtime_total_seconds": 25.624911708990112,
+      "energy_aligned_mae_ev": 48.16355580661972,
+      "energy_aligned_max_abs_error_ev": 103.62937919735487,
+      "energy_aligned_rmse_ev": 56.4792159004256,
+      "energy_offset_ev": -539.3294964551933,
+      "energy_raw_mae_ev": 539.3294964551933,
+      "energy_raw_max_abs_error_ev": 642.9588756525482,
+      "energy_raw_mean_signed_error_ev": -539.3294964551933,
+      "energy_raw_rmse_ev": 542.278717612391,
+      "matched_candidate_converged": 12,
+      "matched_structure_ids": [
+        "f67b4fe8525ec26c",
+        "a2330293e814d720",
+        "636c3943e12895cb",
+        "7e0cb75306f47f6f",
+        "9ed899052c1ede60",
+        "0173b205f6a5e0d7",
+        "1b6f66e847adf264",
+        "fb75a97fd775c76d",
+        "76c2512dfce874bd",
+        "3495ef2ffd6cb58f",
+        "26610f4a86dc91d1",
+        "5d6c0ab5cb071bfa"
+      ],
+      "max_force_mae_ev_per_ang": 1307.1058358315686,
+      "max_force_rmse_ev_per_ang": 1307.483634356921,
+      "n_candidate_records": 12,
+      "n_energy_pairs": 12,
+      "n_matched": 12,
+      "name": "dftpy_pbe_wt_atomic_m100",
+      "spearman_energy": -0.1048951048951049,
+      "speedup_vs_truth": 62.310881926474615,
+      "top1_match": false,
+      "top3_recall": 0.0,
+      "truth_runtime_median_seconds": 134.13521043700166,
+      "truth_runtime_total_seconds": 1596.7108478752198
+    }
+  ],
+  "truth_energy_records": 12,
+  "truth_name": "ksdft_qe_pbe_scf_pilot_all12",
+  "truth_records": 12
+}

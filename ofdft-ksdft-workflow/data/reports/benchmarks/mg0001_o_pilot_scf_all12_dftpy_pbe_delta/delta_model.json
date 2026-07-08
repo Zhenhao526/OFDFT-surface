@@ -1,0 +1,34 @@
+{
+  "candidate_energy_key": "total_energy_ev",
+  "coefficients": [
+    -0.026977819197836754,
+    0.037643132392698855,
+    27.058946666493426,
+    1.8942912725948275,
+    -0.09812896781477781,
+    -0.09812896781587366,
+    14.165015244013631,
+    -16.05627498376885,
+    -10.401464312576842,
+    12.194595084469867,
+    -0.09812896781606856
+  ],
+  "corrected_energy_key": "corrected_total_energy_ev",
+  "delta_key": "delta_energy_pred_ev",
+  "feature_names": [
+    "bias",
+    "total_energy_ev",
+    "height_angstrom",
+    "max_force_ev_per_ang",
+    "system_name=mg0001_o_pilot",
+    "adsorbate=O",
+    "site=bridge",
+    "site=fcc",
+    "site=hcp",
+    "site=top",
+    "orientation=atom"
+  ],
+  "model_type": "ridge_linear_delta_energy",
+  "ridge_alpha": 1.0,
+  "target_name": "delta_total_energy_ev"
+}
