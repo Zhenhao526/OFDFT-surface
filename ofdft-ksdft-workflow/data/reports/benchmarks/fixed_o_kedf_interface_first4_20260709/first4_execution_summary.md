@@ -1,4 +1,4 @@
-# First4 Fixed-O KEDF Adsorption Benchmark Summary
+# First4 Fixed-O KEDF Diagnostic Summary
 
 ## Scope
 
@@ -18,9 +18,25 @@
   - `LD_LIBRARY_PATH=/mnt/afs/home/xiazhenhao/mamba-envs/abacus-mpn-gpu-ustc/lib:$LD_LIBRARY_PATH`
 - A first attempt without those LibXC variables produced error records and is not used for the benchmark.
 
-## Adsorption Error Ranking
+## Adsorption Sign Sanity
 
-Ranked by raw adsorption MAE against KSDFT:
+The direct fixed-O mixed-reference branch fails the basic physical sign check for most variants. For atomic O adsorption on Mg(0001), the KSDFT truth values in this benchmark are negative. Nonnegative predicted adsorption energies mean this raw branch should not be interpreted as a physical adsorption-energy model.
+
+| KEDF variant | matched | negative Eads | nonnegative Eads | sign check |
+| --- | ---: | ---: | ---: | --- |
+| `mgp_atomic_sp08_m30` | 4 | 4 | 0 | pass |
+| `mgpa_atomic_sp08_m30` | 4 | 3 | 1 | fail |
+| `wt_heg_sp08_m30` | 4 | 1 | 3 | fail |
+| `lmgp_atomic_sp08_m30` | 4 | 0 | 4 | fail |
+| `lmgpa_atomic_sp08_m30` | 4 | 0 | 4 | fail |
+| `hc_atomic_sp08_m30` | 4 | 0 | 4 | fail |
+| `revhc_atomic_sp08_m30` | 4 | 0 | 4 | fail |
+| `tf_heg_sp08_m100` | 4 | 0 | 4 | fail |
+| `tfvw_heg_sp08_m100` | 4 | 0 | 4 | fail |
+
+## Diagnostic Error Ranking
+
+Ranked by raw adsorption MAE against KSDFT. This table is diagnostic only because the raw fixed-O/M-OFDFT mixed-reference branch is not physically valid for variants with nonnegative adsorption energies.
 
 | rank | KEDF variant | matched | adsorption raw MAE (eV) | adsorption aligned MAE (eV) | Spearman | runtime total (s) |
 | ---: | --- | ---: | ---: | ---: | ---: | ---: |
@@ -36,15 +52,17 @@ Ranked by raw adsorption MAE against KSDFT:
 
 ## Interpretation
 
-- Raw adsorption MAE is still large for every KEDF. On this four-structure subset, MGPA is the best raw candidate, followed by WT.
-- Several methods have small aligned MAE after removing a constant adsorption offset, especially TFvW, revHC, LMGPA, TF, HC, and LMGP. This suggests some errors are offset-like on this tiny subset, but it is not yet a reliable ranking result.
+- The direct fixed-O absolute-reference route is not acceptable as a production adsorption-energy definition. Eight of nine variants produce at least one nonnegative adsorption energy on a system where the KSDFT references are negative.
+- The formula sign is not reversed: `E_ads = E(slab+O) - E(slab) - E(O)` is correct. The problem is that the calibrated M-OFDFT atomic-O absolute energy is being mixed with KEDF slab and interface energies that do not share a consistent energy zero.
+- Raw adsorption MAE is still large for every KEDF. MGP is the only variant that passes the sign check on these four structures, but its raw MAE remains 94.167 eV, so passing the sign check alone is not enough.
+- Several methods have small aligned MAE after removing a constant adsorption offset, especially TFvW, revHC, LMGPA, TF, HC, and LMGP. This suggests the relative shape may contain useful information, but only after explicit offset or chemical-potential calibration.
 - Spearman is mostly 0 with only 4 structures. Treat ranking/top-k metrics as diagnostic only.
 - Runtime totals include four adsorbed calculations plus one clean slab reference per variant. These fresh remote timings were collected on a busy login node and should not replace a controlled speed benchmark.
 
 ## Next Step
 
-Promote a smaller set to 12-structure pilot runs:
+Do not promote the raw fixed-O mixed-reference branch directly to 12-structure production. First build a calibrated adsorption-energy branch:
 
-- Keep raw-MAE baselines: `mgpa_atomic_sp08_m30`, `wt_heg_sp08_m30`, `mgp_atomic_sp08_m30`.
-- Keep offset-shape candidates: `revhc_atomic_sp08_m30`, `hc_atomic_sp08_m30`, `lmgp_atomic_sp08_m30`.
-- Deprioritize `tfvw_heg_sp08_m100` for raw adsorption energy despite its low aligned MAE, because its raw adsorption offset is the largest in this batch.
+- Calibrate an effective `mu_O` or adsorption offset per KEDF using a KSDFT anchor structure.
+- Recompute first4 adsorption energies after calibration and require the sign sanity check to pass.
+- Only then expand promising variants to 12 structures, likely starting with `mgp_atomic_sp08_m30`, `mgpa_atomic_sp08_m30`, `wt_heg_sp08_m30`, `revhc_atomic_sp08_m30`, `hc_atomic_sp08_m30`, and `lmgp_atomic_sp08_m30`.

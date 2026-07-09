@@ -10,10 +10,28 @@ The goal is to focus the comparison on the adsorbed Mg+O and clean-slab KEDF ene
 
 Caveat: current KEDF coverage is still sparse. Four-structure pilot metrics are useful for screening obvious failures and offsets, but ranking conclusions require more completed slab+adsorbed pairs.
 
+Physical sign sanity matters: for atomic O adsorption on Mg(0001), stable KSDFT reference adsorption energies in this benchmark are negative. A raw fixed-O KEDF branch that predicts nonnegative adsorption energies should be treated as a nonphysical diagnostic branch rather than a deployable adsorption-energy model.
+
 ## Adsorbate Reference
 
 - reference_id: `o_atom_mldft_str25_qm9_pseudo_calibrated_to_qe_o_atom`
 - total_energy_ev: `-559.8598218127081`
+
+## Adsorption Sign Sanity
+
+| variant | records | negative Eads | nonnegative Eads | min Eads(eV) | max Eads(eV) | sign check |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| `wt_heg_sp08_m30` | 4 | 1 | 3 | -34.4008 | 103.767 | nonphysical raw branch |
+| `mgp_atomic_sp08_m30` | 4 | 4 | 0 | -168.04 | -65.4133 | pass |
+| `mgpa_atomic_sp08_m30` | 4 | 3 | 1 | -100.065 | 20.0786 | nonphysical raw branch |
+| `lmgp_atomic_sp08_m30` | 4 | 0 | 4 | 100.443 | 142.805 | nonphysical raw branch |
+| `lmgpa_atomic_sp08_m30` | 4 | 0 | 4 | 129.959 | 162.52 | nonphysical raw branch |
+| `hc_atomic_sp08_m30` | 4 | 0 | 4 | 105.279 | 145.641 | nonphysical raw branch |
+| `revhc_atomic_sp08_m30` | 4 | 0 | 4 | 107.793 | 140.814 | nonphysical raw branch |
+| `tfvw_heg_sp08_m100` | 4 | 0 | 4 | 162.447 | 184.078 | nonphysical raw branch |
+| `tf_heg_sp08_m100` | 4 | 0 | 4 | 103.047 | 142.714 | nonphysical raw branch |
+
+Warning: at least one variant has nonnegative raw adsorption energies. Keep the benchmark metrics for diagnostics, but do not interpret this raw fixed-O/M-OFDFT mixed-reference branch as physical adsorption energies without an additional chemical-potential or KS-anchor calibration.
 
 ## Benchmark
 

@@ -1,6 +1,10 @@
 import pytest
 
-from ofks.workflows.build_fixed_o_kedf_benchmark import build_fixed_o_kedf_benchmark_records
+from ofks.workflows.build_fixed_o_kedf_benchmark import (
+    _adsorption_sign_sanity,
+    build_fixed_o_kedf_benchmark_records,
+    render_fixed_o_report,
+)
 
 
 def test_build_fixed_o_kedf_benchmark_records_use_fixed_o_reference():
@@ -107,3 +111,42 @@ def test_build_fixed_o_kedf_benchmark_records_amortize_reference_runtime():
     records = result["candidates"]["wt"]
     assert [record["runtime_seconds"] for record in records] == pytest.approx([12.0, 22.0])
     assert sum(record["runtime_seconds"] for record in records) == pytest.approx(34.0)
+
+
+def test_adsorption_sign_sanity_flags_nonnegative_records():
+    summary = _adsorption_sign_sanity(
+        {
+            "wt": [
+                {"adsorption_energy_ev": -1.0},
+                {"adsorption_energy_ev": 0.0},
+                {"adsorption_energy_ev": 2.0},
+            ]
+        }
+    )
+
+    assert summary["wt"]["negative_records"] == 1
+    assert summary["wt"]["nonnegative_records"] == 2
+    assert summary["wt"]["all_negative"] is False
+
+
+def test_render_fixed_o_report_includes_sign_sanity_warning():
+    text = render_fixed_o_report(
+        {"truth_name": "ks", "truth_records": 0, "truth_energy_records": 0, "algorithms": []},
+        {
+            "adsorbate_reference": {"reference_id": "o", "total_energy_ev": -1.0},
+            "adsorption_sign_sanity": {
+                "wt": {
+                    "records": 1,
+                    "negative_records": 0,
+                    "nonnegative_records": 1,
+                    "min_adsorption_energy_ev": 2.0,
+                    "max_adsorption_energy_ev": 2.0,
+                    "all_negative": False,
+                }
+            },
+            "skipped": [],
+        },
+    )
+
+    assert "nonphysical raw branch" in text
+    assert "Warning:" in text

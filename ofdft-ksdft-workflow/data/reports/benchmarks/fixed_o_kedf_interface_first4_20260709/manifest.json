@@ -11,6 +11,80 @@
     "variant": null,
     "xc": null
   },
+  "adsorption_sign_sanity": {
+    "hc_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 145.64057516198955,
+      "min_adsorption_energy_ev": 105.27905915067095,
+      "negative_records": 0,
+      "nonnegative_records": 4,
+      "records": 4
+    },
+    "lmgp_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 142.80532389976725,
+      "min_adsorption_energy_ev": 100.44281208437314,
+      "negative_records": 0,
+      "nonnegative_records": 4,
+      "records": 4
+    },
+    "lmgpa_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 162.52002830929996,
+      "min_adsorption_energy_ev": 129.95866781773657,
+      "negative_records": 0,
+      "nonnegative_records": 4,
+      "records": 4
+    },
+    "mgp_atomic_sp08_m30": {
+      "all_negative": true,
+      "max_adsorption_energy_ev": -65.41328199797863,
+      "min_adsorption_energy_ev": -168.03959352461243,
+      "negative_records": 4,
+      "nonnegative_records": 0,
+      "records": 4
+    },
+    "mgpa_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 20.078569715500635,
+      "min_adsorption_energy_ev": -100.06549139240087,
+      "negative_records": 3,
+      "nonnegative_records": 1,
+      "records": 4
+    },
+    "revhc_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 140.81398068305862,
+      "min_adsorption_energy_ev": 107.79295961882599,
+      "negative_records": 0,
+      "nonnegative_records": 4,
+      "records": 4
+    },
+    "tf_heg_sp08_m100": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 142.7140747549056,
+      "min_adsorption_energy_ev": 103.04655435653694,
+      "negative_records": 0,
+      "nonnegative_records": 4,
+      "records": 4
+    },
+    "tfvw_heg_sp08_m100": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 184.07830548142738,
+      "min_adsorption_energy_ev": 162.4470547037272,
+      "negative_records": 0,
+      "nonnegative_records": 4,
+      "records": 4
+    },
+    "wt_heg_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 103.76741477940232,
+      "min_adsorption_energy_ev": -34.400833463689196,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    }
+  },
   "candidate_files": {
     "hc_atomic_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/hc_atomic_sp08_m30_fixed_o.jsonl",
     "lmgp_atomic_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/lmgp_atomic_sp08_m30_fixed_o.jsonl",

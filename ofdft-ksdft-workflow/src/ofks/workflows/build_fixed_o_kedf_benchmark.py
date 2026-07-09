@@ -62,6 +62,7 @@ def main(
         "candidate_files": candidate_files,
         "clean_slab_id": clean_slab_id,
         "adsorbate_reference": _component_summary(adsorbate_reference_records[0]),
+        "adsorption_sign_sanity": _adsorption_sign_sanity(result["candidates"]),
         "skipped": result["skipped"],
     }
     (out_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -145,15 +146,49 @@ def render_fixed_o_report(report: dict[str, Any], manifest: dict[str, Any]) -> s
         "",
         "Caveat: current KEDF coverage is still sparse. Four-structure pilot metrics are useful for screening obvious failures and offsets, but ranking conclusions require more completed slab+adsorbed pairs.",
         "",
+        "Physical sign sanity matters: for atomic O adsorption on Mg(0001), stable KSDFT reference adsorption energies in this benchmark are negative. A raw fixed-O KEDF branch that predicts nonnegative adsorption energies should be treated as a nonphysical diagnostic branch rather than a deployable adsorption-energy model.",
+        "",
         "## Adsorbate Reference",
         "",
         f"- reference_id: `{manifest['adsorbate_reference'].get('reference_id')}`",
         f"- total_energy_ev: `{manifest['adsorbate_reference'].get('total_energy_ev')}`",
         "",
-        "## Benchmark",
-        "",
-        render_benchmark_markdown(report),
     ]
+    sign_sanity = manifest.get("adsorption_sign_sanity") or {}
+    if sign_sanity:
+        lines.extend(
+            [
+                "## Adsorption Sign Sanity",
+                "",
+                "| variant | records | negative Eads | nonnegative Eads | min Eads(eV) | max Eads(eV) | sign check |",
+                "| --- | ---: | ---: | ---: | ---: | ---: | --- |",
+            ]
+        )
+        for name, item in sign_sanity.items():
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        f"`{name}`",
+                        str(item["records"]),
+                        str(item["negative_records"]),
+                        str(item["nonnegative_records"]),
+                        _fmt(item["min_adsorption_energy_ev"]),
+                        _fmt(item["max_adsorption_energy_ev"]),
+                        "pass" if item["all_negative"] else "nonphysical raw branch",
+                    ]
+                )
+                + " |"
+            )
+        if any(item["nonnegative_records"] for item in sign_sanity.values()):
+            lines.extend(
+                [
+                    "",
+                    "Warning: at least one variant has nonnegative raw adsorption energies. Keep the benchmark metrics for diagnostics, but do not interpret this raw fixed-O/M-OFDFT mixed-reference branch as physical adsorption energies without an additional chemical-potential or KS-anchor calibration.",
+                    "",
+                ]
+            )
+    lines.extend(["## Benchmark", "", render_benchmark_markdown(report)])
     if manifest["skipped"]:
         lines.extend(["", "## Skipped Variants", ""])
         for item in manifest["skipped"]:
@@ -256,6 +291,45 @@ def _runtime_with_reference_share(record: dict[str, Any], reference_runtime_shar
     if not values:
         return None
     return float(sum(values))
+
+
+def _adsorption_sign_sanity(candidates: dict[str, list[dict[str, Any]]]) -> dict[str, dict[str, Any]]:
+    summary: dict[str, dict[str, Any]] = {}
+    for name, records in candidates.items():
+        values = [
+            float(record["adsorption_energy_ev"])
+            for record in records
+            if record.get("adsorption_energy_ev") is not None
+        ]
+        if not values:
+            summary[name] = {
+                "records": 0,
+                "negative_records": 0,
+                "nonnegative_records": 0,
+                "min_adsorption_energy_ev": None,
+                "max_adsorption_energy_ev": None,
+                "all_negative": False,
+            }
+            continue
+        negative = sum(1 for value in values if value < 0.0)
+        nonnegative = len(values) - negative
+        summary[name] = {
+            "records": len(values),
+            "negative_records": negative,
+            "nonnegative_records": nonnegative,
+            "min_adsorption_energy_ev": min(values),
+            "max_adsorption_energy_ev": max(values),
+            "all_negative": nonnegative == 0,
+        }
+    return summary
+
+
+def _fmt(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, float):
+        return f"{value:.6g}"
+    return str(value)
 
 
 def _component_summary(record: dict[str, Any], *, role: str | None = None) -> dict[str, Any]:
