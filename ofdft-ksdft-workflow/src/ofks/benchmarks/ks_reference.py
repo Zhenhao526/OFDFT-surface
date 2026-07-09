@@ -122,7 +122,7 @@ def write_summary_csv(report: dict[str, Any], path: str | Path) -> None:
         "speedup_vs_truth",
     ]
     with output.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         for algo in report["algorithms"]:
             writer.writerow({key: algo.get(key) for key in fieldnames})

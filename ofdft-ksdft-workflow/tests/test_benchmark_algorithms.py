@@ -71,7 +71,9 @@ def test_benchmark_reports_raw_and_offset_aligned_energy_errors(tmp_path):
 
     csv_path = tmp_path / "summary.csv"
     write_summary_csv(report, csv_path)
-    assert "energy_aligned_mae_ev" in csv_path.read_text()
+    csv_text = csv_path.read_text()
+    assert "energy_aligned_mae_ev" in csv_text
+    assert "\r\n" not in csv_text
 
     json.dumps(report)
 
