@@ -1,0 +1,205 @@
+{
+  "adsorption_sign_sanity": {
+    "hc_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 35.74959707061487,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    },
+    "lmgp_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 37.75059287469037,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    },
+    "lmgpa_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 27.94944155085966,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    },
+    "mgp_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 98.01439258593007,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    },
+    "mgpa_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 115.53214216719778,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    },
+    "revhc_atomic_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 28.409102123528896,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    },
+    "tf_heg_sp08_m100": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 35.05560145766492,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    },
+    "tfvw_heg_sp08_m100": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 17.019331836996457,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    },
+    "wt_heg_sp08_m30": {
+      "all_negative": false,
+      "max_adsorption_energy_ev": 133.55632930238778,
+      "min_adsorption_energy_ev": -4.611918940703731,
+      "negative_records": 1,
+      "nonnegative_records": 3,
+      "records": 4
+    }
+  },
+  "anchor": {
+    "height_angstrom": 2.0,
+    "site": "top",
+    "structure_id": "f67b4fe8525ec26c",
+    "system_name": "mg0001_o_pilot",
+    "truth_adsorption_energy_ev": -4.611918940703731,
+    "truth_adsorption_key": "ks_adsorption_energy_ev"
+  },
+  "calibrations": {
+    "hc_atomic_sp08_m30": {
+      "anchor_adsorbed_total_energy_ev": -35118.12758611316,
+      "anchor_delta_interface_energy_ev": -454.58076266203716,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -34663.54682345112,
+      "mu_o_eff_ev": -449.9688437213334,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    },
+    "lmgp_atomic_sp08_m30": {
+      "anchor_adsorbed_total_energy_ev": -35512.56013429082,
+      "anchor_delta_interface_energy_ev": -459.41700972833496,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -35053.143124562484,
+      "mu_o_eff_ev": -454.80509078763123,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    },
+    "lmgpa_atomic_sp08_m30": {
+      "anchor_adsorbed_total_energy_ev": -33705.75759281464,
+      "anchor_delta_interface_energy_ev": -429.90115399497154,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -33275.85643881967,
+      "mu_o_eff_ev": -425.2892350542678,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    },
+    "mgp_atomic_sp08_m30": {
+      "anchor_adsorbed_total_energy_ev": -52447.92882038355,
+      "anchor_delta_interface_energy_ev": -727.8994153373205,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -51720.02940504623,
+      "mu_o_eff_ev": -723.2874963966168,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    },
+    "mgpa_atomic_sp08_m30": {
+      "anchor_adsorbed_total_energy_ev": -52663.15953466811,
+      "anchor_delta_interface_energy_ev": -659.925313205109,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -52003.234221463004,
+      "mu_o_eff_ev": -655.3133942644052,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    },
+    "revhc_atomic_sp08_m30": {
+      "anchor_adsorbed_total_energy_ev": -34956.49162546525,
+      "anchor_delta_interface_energy_ev": -452.0668621938821,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -34504.42476327137,
+      "mu_o_eff_ev": -447.4549432531784,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    },
+    "tf_heg_sp08_m100": {
+      "anchor_adsorbed_total_energy_ev": -35327.45970174869,
+      "anchor_delta_interface_energy_ev": -456.81326745617116,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -34870.64643429252,
+      "mu_o_eff_ev": -452.20134851546743,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    },
+    "tfvw_heg_sp08_m100": {
+      "anchor_adsorbed_total_energy_ev": -31419.211447498135,
+      "anchor_delta_interface_energy_ev": -397.4127671089809,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -31021.798680389154,
+      "mu_o_eff_ev": -392.8008481682772,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    },
+    "wt_heg_sp08_m30": {
+      "anchor_adsorbed_total_energy_ev": -53091.95902518837,
+      "anchor_delta_interface_energy_ev": -594.2606552763973,
+      "anchor_structure_id": "f67b4fe8525ec26c",
+      "candidate_records": 4,
+      "clean_slab_structure_id": "d78831db0d40c74b",
+      "clean_slab_total_energy_ev": -52497.698369911974,
+      "mu_o_eff_ev": -589.6487363356936,
+      "truth_adsorption_energy_ev": -4.611918940703731
+    }
+  },
+  "candidate_files": {
+    "hc_atomic_sp08_m30": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/hc_atomic_sp08_m30_ks_anchor_mu_o.jsonl",
+    "lmgp_atomic_sp08_m30": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/lmgp_atomic_sp08_m30_ks_anchor_mu_o.jsonl",
+    "lmgpa_atomic_sp08_m30": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/lmgpa_atomic_sp08_m30_ks_anchor_mu_o.jsonl",
+    "mgp_atomic_sp08_m30": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/mgp_atomic_sp08_m30_ks_anchor_mu_o.jsonl",
+    "mgpa_atomic_sp08_m30": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/mgpa_atomic_sp08_m30_ks_anchor_mu_o.jsonl",
+    "revhc_atomic_sp08_m30": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/revhc_atomic_sp08_m30_ks_anchor_mu_o.jsonl",
+    "tf_heg_sp08_m100": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/tf_heg_sp08_m100_ks_anchor_mu_o.jsonl",
+    "tfvw_heg_sp08_m100": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/tfvw_heg_sp08_m100_ks_anchor_mu_o.jsonl",
+    "wt_heg_sp08_m30": "data/reports/benchmarks/anchored_kedf_interface_first4_20260710/candidates/wt_heg_sp08_m30_ks_anchor_mu_o.jsonl"
+  },
+  "clean_slab_id": "d78831db0d40c74b",
+  "expansion_gate": {
+    "blocked_variants": [
+      "wt_heg_sp08_m30",
+      "mgp_atomic_sp08_m30",
+      "mgpa_atomic_sp08_m30",
+      "lmgp_atomic_sp08_m30",
+      "lmgpa_atomic_sp08_m30",
+      "hc_atomic_sp08_m30",
+      "revhc_atomic_sp08_m30",
+      "tf_heg_sp08_m100",
+      "tfvw_heg_sp08_m100"
+    ],
+    "criterion": "all requested variants must complete and all calibrated first4 adsorption_energy_ev values must be < 0 before expanding to 12 structures",
+    "passed": false,
+    "passed_variants": []
+  },
+  "skipped": []
+}
