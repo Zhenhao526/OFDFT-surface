@@ -95,11 +95,14 @@ def build_fixed_o_kedf_benchmark_records(
             continue
         slab_energy = _required_energy(slab, "total_energy_ev", role=f"{name} slab")
         deduped = _dedupe_by_structure_id(adsorbed_records)
+        energy_records = [record for record in deduped if record.get("total_energy_ev") is not None]
+        reference_runtime = _combined_runtime(slab, adsorbate_reference_record)
+        reference_runtime_share = (
+            reference_runtime / len(energy_records) if reference_runtime is not None and energy_records else None
+        )
         records = []
-        for record in deduped:
+        for record in energy_records:
             energy = record.get("total_energy_ev")
-            if energy is None:
-                continue
             adsorbed_energy = float(energy)
             item = _candidate_view(record)
             item.update(
@@ -110,11 +113,13 @@ def build_fixed_o_kedf_benchmark_records(
                     "total_energy_ev": adsorbed_energy,
                     "adsorption_energy_ev": adsorption_energy(adsorbed_energy, slab_energy, adsorbate_energy),
                     "converged": _combined_convergence(record, slab, adsorbate_reference_record),
-                    "runtime_seconds": _combined_runtime(record, slab, adsorbate_reference_record),
+                    "runtime_seconds": _runtime_with_reference_share(record, reference_runtime_share),
                     "metadata": {
                         "fixed_o_reference": True,
                         "hybrid_formula": "E_ads = E_KEDF(slab+O) - E_KEDF(clean_slab) - E_fixed(O)",
                         "kedf_variant": name,
+                        "reference_runtime_seconds": reference_runtime,
+                        "reference_runtime_amortized_seconds": reference_runtime_share,
                         "adsorbed": _component_summary(record, role="adsorbed"),
                         "slab": _component_summary(slab, role="clean_slab"),
                         "adsorbate": _component_summary(adsorbate_reference_record, role="adsorbate"),
@@ -138,7 +143,7 @@ def render_fixed_o_report(report: dict[str, Any], manifest: dict[str, Any]) -> s
         "",
         "The goal is to focus the comparison on the adsorbed Mg+O and clean-slab KEDF energies after the atomic-O reference has been fixed.",
         "",
-        "Caveat: current KEDF coverage is sparse. One-structure variants have meaningless aligned MAE and ranking metrics; read their raw adsorption error only. Multi-structure ranking conclusions require more completed slab+adsorbed pairs.",
+        "Caveat: current KEDF coverage is still sparse. Four-structure pilot metrics are useful for screening obvious failures and offsets, but ranking conclusions require more completed slab+adsorbed pairs.",
         "",
         "## Adsorbate Reference",
         "",
@@ -235,9 +240,22 @@ def _combined_convergence(*records: dict[str, Any]) -> bool | None:
 
 def _combined_runtime(*records: dict[str, Any]) -> float | None:
     runtimes = [record.get("runtime_seconds") for record in records]
-    if any(value is None for value in runtimes):
+    available = [float(value) for value in runtimes if value is not None]
+    if not available:
         return None
-    return float(sum(float(value) for value in runtimes))
+    return float(sum(available))
+
+
+def _runtime_with_reference_share(record: dict[str, Any], reference_runtime_share: float | None) -> float | None:
+    values = []
+    runtime = record.get("runtime_seconds")
+    if runtime is not None:
+        values.append(float(runtime))
+    if reference_runtime_share is not None:
+        values.append(float(reference_runtime_share))
+    if not values:
+        return None
+    return float(sum(values))
 
 
 def _component_summary(record: dict[str, Any], *, role: str | None = None) -> dict[str, Any]:

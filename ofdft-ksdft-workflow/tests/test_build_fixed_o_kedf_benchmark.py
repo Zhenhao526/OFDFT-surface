@@ -58,3 +58,52 @@ def test_build_fixed_o_kedf_benchmark_records_skip_missing_slab_reference():
 
     assert result["candidates"] == {}
     assert result["skipped"] == [{"variant": "mgp", "reason": "missing slab-reference input"}]
+
+
+def test_build_fixed_o_kedf_benchmark_records_sum_available_runtimes():
+    result = build_fixed_o_kedf_benchmark_records(
+        candidate_records_by_name={
+            "wt": [
+                {
+                    "structure_id": "ads",
+                    "total_energy_ev": -20.0,
+                    "converged": True,
+                    "runtime_seconds": 7.0,
+                }
+            ]
+        },
+        slab_reference_records_by_name={
+            "wt": [
+                {
+                    "structure_id": "slab",
+                    "total_energy_ev": -10.0,
+                    "converged": True,
+                    "runtime_seconds": 3.0,
+                }
+            ]
+        },
+        adsorbate_reference_record={"total_energy_ev": -4.0, "converged": True},
+        clean_slab_id="slab",
+    )
+
+    assert result["candidates"]["wt"][0]["runtime_seconds"] == pytest.approx(10.0)
+
+
+def test_build_fixed_o_kedf_benchmark_records_amortize_reference_runtime():
+    result = build_fixed_o_kedf_benchmark_records(
+        candidate_records_by_name={
+            "wt": [
+                {"structure_id": "ads1", "total_energy_ev": -20.0, "runtime_seconds": 10.0},
+                {"structure_id": "ads2", "total_energy_ev": -21.0, "runtime_seconds": 20.0},
+            ]
+        },
+        slab_reference_records_by_name={
+            "wt": [{"structure_id": "slab", "total_energy_ev": -10.0, "runtime_seconds": 4.0}]
+        },
+        adsorbate_reference_record={"total_energy_ev": -4.0},
+        clean_slab_id="slab",
+    )
+
+    records = result["candidates"]["wt"]
+    assert [record["runtime_seconds"] for record in records] == pytest.approx([12.0, 22.0])
+    assert sum(record["runtime_seconds"] for record in records) == pytest.approx(34.0)

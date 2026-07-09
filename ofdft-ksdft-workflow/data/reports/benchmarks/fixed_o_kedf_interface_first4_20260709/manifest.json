@@ -1,0 +1,27 @@
+{
+  "adsorbate_reference": {
+    "converged": true,
+    "kedf": null,
+    "reference_id": "o_atom_mldft_str25_qm9_pseudo_calibrated_to_qe_o_atom",
+    "reference_kind": "isolated_adsorbate",
+    "role": null,
+    "runtime_seconds": null,
+    "structure_id": null,
+    "total_energy_ev": -559.8598218127081,
+    "variant": null,
+    "xc": null
+  },
+  "candidate_files": {
+    "hc_atomic_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/hc_atomic_sp08_m30_fixed_o.jsonl",
+    "lmgp_atomic_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/lmgp_atomic_sp08_m30_fixed_o.jsonl",
+    "lmgpa_atomic_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/lmgpa_atomic_sp08_m30_fixed_o.jsonl",
+    "mgp_atomic_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/mgp_atomic_sp08_m30_fixed_o.jsonl",
+    "mgpa_atomic_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/mgpa_atomic_sp08_m30_fixed_o.jsonl",
+    "revhc_atomic_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/revhc_atomic_sp08_m30_fixed_o.jsonl",
+    "tf_heg_sp08_m100": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/tf_heg_sp08_m100_fixed_o.jsonl",
+    "tfvw_heg_sp08_m100": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/tfvw_heg_sp08_m100_fixed_o.jsonl",
+    "wt_heg_sp08_m30": "data/reports/benchmarks/fixed_o_kedf_interface_first4_20260709/candidates/wt_heg_sp08_m30_fixed_o.jsonl"
+  },
+  "clean_slab_id": "d78831db0d40c74b",
+  "skipped": []
+}
